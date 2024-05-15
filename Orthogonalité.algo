@@ -1,0 +1,30 @@
+FUNCTION dot_product(vec1, vec2 : TABLEAU ENTIERS) : INTEGER
+VAR
+    ps : integer := 0 ;
+
+BEGIN
+    POUR i de 0 à vec1.longueur - 1 FAIRE
+        ps := ps + vec1[i] * vec2[i] ;
+    Fin POUR;
+    RETURN ps
+END_FUNCTION
+
+ALGORITHM Produit_de_points(v1, v2 : TABLEAU ENTIERS)
+VAR
+    ps : integer ;
+
+BEGIN
+    SI v1.longueur <> v2.longueur ALORS // Pour déterminer l'orthogonalité, v1.longueur = v2.longeur
+            Ecrire "Erreur: Les vecteurs n'ont pas la même longueur." ;
+            Arrêter ;
+        Fin_Si ;
+
+    POUR chaque couple de vecteurs (v1, v2) FAIRE
+        ps := dot_product(v1, v2); // Appel de la fonction dot_product(v1, v2) dans le programme principal
+        SI ps = 0 ALORS
+            Ecrire "Les vecteurs ", v1, " et ", v2, " sont orthogonaux." ;
+        SINON ;
+            Ecrire "Les vecteurs ", v1, " et ", v2, " ne sont pas orthogonaux." ;
+        Fin_SI
+    Fin_POUR
+END

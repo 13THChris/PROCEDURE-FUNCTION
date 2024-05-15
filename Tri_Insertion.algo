@@ -1,0 +1,28 @@
+PROCEDURE swap(var x var y : INTEGER)
+VAR
+    tmp: entier;
+BEGIN
+    tmp := y;
+    y := x;
+    x := tmp;
+END_PROCEDURE
+
+PROCEDURE Tri_Insertion(arr: TABLEAU ENTIERS)
+VAR
+    n, i, j, temp: entier;
+
+BEGIN
+    n := arr.longeur;
+
+    POUR i de 1 à n-1 FAIRE // Parcourir chaque élément à partir du 2nd 
+        temp := arr[i]; // conserver l'élément à comparer pour éviter de l'écraser
+        j := i-1; // Index du dernier élément dans la séquence triée   
+
+        TANT QUE j >= 0 ET arr[j] > temp FAIRE // J >= garantie que nous se sortirons pas du tableau
+            swap(arr[j],arr[j+1]); 
+            j := j-1
+        FIN TANT QUE      
+
+        arr[j+1] := temp; 
+    FIN POUR
+END_PROCEDURE
